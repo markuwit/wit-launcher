@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Launcher Redirect</title>
+    <script>
+        // Dictionary of universal web links and custom paths for your requested apps
+        const appRoutes = {
+            "chatgpt": "https://chatgpt.com",
+            "perplexity": "https://www.perplexity.ai",
+            "copilot": "https://copilot.microsoft.com",
+            "claude": "https://claude.ai",
+            "gemini": "https://gemini.google.com",
+            "vibe": "vibe://", // Replace with your specific custom scheme or web URL if Vibe is web-based
+            "offgrid": "offgridai://" // Replace with your specific custom scheme if available
+        };
+
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const appName = urlParams.get('app');
+
+            if (appName && appRoutes[appName]) {
+                const targetUrl = appRoutes[appName];
+                document.getElementById("status").innerText = "Opening " + appName + "...";
+                
+                // Trigger redirect
+                window.location.href = targetUrl;
+            } else {
+                document.getElementById("status").innerText = "Invalid or missing app specification.";
+            }
+        };
+    </script>
+</head>
+<body style="font-family: sans-serif; text-align: center; margin-top: 50px;">
+    <h3 id="status">Loading...</h3>
+    <p>If you are not redirected automatically, <a id="manualLink" href="#">click here</a>.</p>
+</body>
+</html>
