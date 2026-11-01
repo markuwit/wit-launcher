@@ -1,2 +1,2 @@
 # wit-launcher
-app launcher redirects to the custom URI scheme via JavaScript
+An app launcher that redirects to custom URI scheme via JavaScript.
